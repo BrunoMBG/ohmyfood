@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Shrikhand&display=swap");
-@import "../modules/variables";
-@import "../modules/police";
+@import "../utils/variables";
+@import "../utils/mixin";
+@import "../utils/police";
 
 * {
   margin: 0;
@@ -14,7 +15,6 @@ body {
 }
 
 //============================= HEADER
-
 .header__logo {
   display: flex;
   justify-content: center;
@@ -57,23 +57,7 @@ body {
   }
   .search__bar {
     p {
-      font-weight: 500;
-      width: 200px;
-      text-align: center;
-      margin: auto;
-      border-radius: 50px;
-      padding: 15px;
-      background: linear-gradient($secondary-color, $primary-color);
-      $primary-color: rgb(147, 86, 220);
-      $secondary-color: rgb(255, 121, 218);
-      box-shadow: 1px 11px 14px 0px rgba(32, 31, 31, 0.38);
-      cursor: pointer;
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-    a {
-      color: white;
+      @include button;
     }
   }
 }
@@ -116,86 +100,232 @@ body {
   }
 }
 //============================= RESTAURANTS
-.section__restaurants {
-  background-color: $quaternary-color;
-  h2 {
-    font-weight: 900;
-    padding: 40px 0 0 15px;
-    margin-bottom: 20px;
-    font-family: $police-logo-and-title;
-    font-weight: 400;
-  }
-  .restaurants__content {
-    position: relative;
-    border-radius: 15px;
-    padding: 0 0 20px 0;
-    margin-bottom: 20px;
-    background-color: $white-color;
-    img {
-      border-radius: 15px 15px 0 0;
-      object-fit: cover;
-      width: 100%;
-      height: 160px;
+main {
+  .section__restaurants {
+    padding-bottom: 50px;
+    background-color: $quaternary-color;
+    h2 {
+      font-weight: 900;
+      padding: 40px 0 0 15px;
+      margin-bottom: 20px;
+      font-family: $police-logo-and-title;
+      font-weight: 400;
     }
-    .new__content {
-      position: absolute;
-      top: 1rem;
-      right: 30px;
-      padding: 0.5rem;
-      background-color: $tertiary-color;
-      color: $new-content-color;
-      font-weight: 800;
-    }
-    .restaurants__description {
-
+    .restaurants__content {
       position: relative;
-      a {
-        color: $black-color;
-        .restaurant__description--text {
-          h3 {
-            font-weight: 900;
-            color: $black-color;
-            margin: 10px 0 0 20px;
-            font-family: $police-logo-and-title;
-            font-weight: 300;
-          }
-          p {
-            margin: 8px 0 0 20px;
-            font-weight: 500;
-            color: $black-color;
-          }
-        }
+      border-radius: 15px;
+      // padding: 0 0 20px 0;
+      margin-bottom: 20px;
+      background-color: $white-color;
+      img {
+        border-radius: 15px 15px 0 0;
+        object-fit: cover;
+        width: 100%;
+        height: 160px;
       }
-      .hearts {
-        width: 30px;
-        height: 30px;
-        margin-right: 20px;
-        i {
-          position: absolute;
-          transform: translateY(-50%);
-          top: 50%;
-          right: 1rem;
-          font-size: 2rem;
+      .new__content {
+        position: absolute;
+        top: 1rem;
+        right: 30px;
+        padding: 0.5rem;
+        background-color: $tertiary-color;
+        color: $new-content-color;
+        font-weight: 800;
+      }
+      .restaurants__description {
+        position: relative;
+        a {
+          color: $black-color;
+          .restaurant__description--text {
+            h3 {
+              font-weight: 900;
+              color: $black-color;
+              margin: 10px 0 0 20px;
+              font-family: $police-logo-and-title;
+              font-weight: 300;
+            }
+            p {
+              margin: 8px 0 0 20px;
+              font-weight: 500;
+              color: $black-color;
+            }
+          }
         }
-        .fas {
-          color: transparent;
-          background-image: linear-gradient(0deg, #9356dc, #ff79da);
-          background-clip: text;
-          -webkit-background-clip: text;
-          opacity: 0;
-          &:hover {
-            opacity: 1;
-            transition: opacity 700ms linear;
-            cursor: pointer;
+        .hearts {
+          width: 30px;
+          height: 30px;
+          margin-right: 20px;
+          i {
+            position: absolute;
+            transform: translateY(-20%);
+            top: 20px;
+            right: 1rem;
+            font-size: 2rem;
+          }
+          .fas {
+            @include heart-animation;
           }
         }
       }
     }
+    .transition-card {
+      transition: transform 250ms ease-in-out;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
   }
-  .transition-card {
-    transition: transform 250ms ease-in-out;
-    &:hover {
-      transform: scale(1.05);
+}
+
+//============================= PAGES DES RESTAURANT
+// Header
+header {
+  position: relative;
+  a {
+    i {
+      position: absolute;
+      left: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+    }
+  }
+}
+//Photo du menu
+.restaurant__recipe__photo {
+  img {
+    position: relative;
+    z-index: 1;
+    margin-bottom: -50px;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+//Tous les menu
+.menu__restaurant {
+  position: relative;
+  z-index: 2;
+  border-radius: 30px 30px 0 0;
+  background-color: $quaternary-color;
+  padding-top: 20px;
+  .title__restaurant {
+    position: relative;
+    h2 {
+      width: 90%;
+      margin: auto;
+      font-weight: 600;
+      font-family: $police-logo-and-title;
+    }
+    //Les coeurs
+    .hearts {
+      i {
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 25px;
+      }
+      //Animation du coeur
+      .fas {
+        @include heart-animation;
+      }
+    }
+  }
+
+  //Infos du menu
+  .card__restaurant {
+    h3 {
+      width: 90%;
+      margin: auto;
+      font-weight: 500;
+      padding-bottom: 5px;
+      margin-top: 50px;
+      text-transform: uppercase;
+      position: relative;
+      // Ajouter la bordure en bas du titre
+      &::after {
+        content: "";
+        position: absolute;
+        top: 25px;
+        left: 0;
+        height: 0.25rem;
+        width: 3rem;
+        background-color: $tertiary-color;
+        display: inline-block;
+      }
+    }
+  }
+
+  .the__entrees {
+    .the__entrees--content {
+      @include text-formatting-menu;
+      display: flex;
+      border-radius: 20px;
+      width: 90%;
+      margin: auto;
+      background-color: $white-color;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      //Description et prix
+      .the__entrees--infos {
+        @include text-formatting-menu;
+        padding: 1rem;
+        h4 {
+          @include text-formatting-menu;
+          font-family: $police-logo-and-title;
+          font-weight: 500;
+        }
+        p {
+          @include text-formatting-menu;
+          text-overflow: ellipsis;
+        }
+      }
+      // Prix
+      .entrees__price {
+        display: flex;
+        align-items: flex-end;
+        padding: 1rem;
+        font-weight: 900;
+        margin-left: auto;
+      }
+      //Icone
+      .check-icon {
+        width: $check-width;
+        margin-right: -$check-width;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border-radius: 0 15px 15px 0;
+        transition: margin-right 0.8s;
+        background-color: $tertiary-color;
+        i {
+          font-size: 1.5rem;
+          color: $white-color;
+        }
+      }
+      //Animation du icone
+      &:hover .check-icon {
+        margin-right: 0;
+        i {
+          @include check-icon-animation;
+          animation: check-icon-animation 0.5s ease-in-out;
+        }
+      }
+    }
+  }
+  //Boutton commander
+  .command__btn {
+    padding-bottom: 50px;
+    p {
+      @include button;
+      margin-top: 50px;
+    }
+    a{
+      color: $white-color;
     }
   }
 }
@@ -203,24 +333,25 @@ body {
 footer {
   background-color: #2d2a2a;
   padding: 25px 0 25px 25px;
+  // Les liens
   a {
     color: $white-color;
-
+    // Logo
     h3 {
       font-weight: 900;
       padding-bottom: 25px;
       font-family: $police-logo-and-title;
     }
   }
+  // Liste
   ul {
-    
     li {
       padding-bottom: 8px;
       &:hover {
         text-decoration: underline;
         color: $white-color;
       }
-
+      // Icone
       i {
         margin-right: 10px;
         font-size: 15px;
@@ -239,53 +370,50 @@ footer {
       padding-bottom: 20px;
     }
     ol {
-     width: 90%;
-     margin: auto;
+      width: 90%;
+      margin: auto;
     }
   }
   //============================= RESTAURANTS
-  .section__restaurants {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    h2 {
-      width: 90%;
-      margin: auto;
-      margin-bottom: 40px;
-    }
-    .restaurants__content {
-      width: 40%;
+  main {
+    .section__restaurants {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      h2 {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 40px;
+      }
+      .restaurants__content {
+        width: 40%;
+        margin-bottom: 50px;
+      }
+      .restaurants__description {
+        .hearts {
+          i {
+            width: 2rem;
+          }
+        }
+      }
     }
   }
-// //============================= FOOTER  
-//   footer {
-//  display: flex;
-//  justify-content: flex-end;
-// position: relative;
-//     a {
-//       h3 {
-// position: absolute;
-// right: 5%;
-// top: 50%;
-// transform: translateY(-38%);
-//       }
-//     }
-//     ul {
-//       display: flex;
-
-//       // width: 800px;
-//       margin-right: 20px;
-//       li {
-//         // margin-left: 15px;
-//         i {
-        
-//         }
-//       }
-//     }
-//   }
+  // //============================= FOOTER
+    footer {
+      a {
+        h3 {
+          width: 90%;
+          margin: auto;
+        }
+      }
+      ul {
+        width: 90%;
+        margin: auto;
+      }
+    }
 }
 @media all and (min-width: 1024px) {
-//============================= FONCTIONNEMENT DU SITE
+  //============================= FONCTIONNEMENT DU SITE
   .operations__content {
     h2 {
       width: 90%;
@@ -302,45 +430,40 @@ footer {
       }
     }
   }
-  .section__restaurants {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    h2 {
-      width: 90%;
-      margin: auto;
-      margin-bottom: 40px;
-    }
-    .restaurants__content {
-      width: 40%;
+  main {
+    .section__restaurants {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      h2 {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 40px;
+      }
+      .restaurants__content {
+        width: 40%;
+        margin-bottom: 50px;
+      }
+      .restaurants__description {
+        .hearts {
+          i {
+            width: 2.5rem;
+          }
+        }
+      }
     }
   }
-//============================= FOOTER
-  // footer {
-  //   display: flex;
-  //   justify-content: flex-end;
-  //  position: relative;
-   
-  //      a {
-  //        h3 {
-  //  position: absolute;
-  //  right: 5%;
-  //  top: 50%;
-  //  transform: translateY(-38%);
-  //        }
-  //      }
-  //      ul {
-  //        display: flex;
-  //       width: 800px;
-  //        margin-right: 20px;
-         
-     
-  //        li {
-  //          margin-left: 15px;
-  //          i {
-           
-  //          }
-  //        }
-  //      }
-  //    }
+  //============================= FOOTER
+  footer {
+    a {
+      h3 {
+        width: 90%;
+        margin: auto;
+      }
+    }
+    ul {
+      width: 90%;
+      margin: auto;
+    }
+  }
 }

@@ -10,6 +10,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     >
+    <link rel="apple-touch-icon" sizes="180x180" href="/imgs/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/imgs/favicon//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/imgs/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/imgs/favicon/site.webmanifest">
     <link rel="stylesheet" href="style/style.css" >
     <title>ohmyfood</title>
   </head>
@@ -18,7 +22,7 @@
     <header class="header__logo">
       <a href="index.html"> <h1>ohmyfood</h1></a>
     </header>
-    <main>
+    
       <!-- Localisation -->
       <div class="local">
         <i class="fa-solid fa-location-dot"></i>
@@ -28,7 +32,7 @@
 
       <!-- Conteneur barre de recherche -->
       <div class="search__restaurant">
-        <h2>Réservez me menu qui vous convient</h2>
+        <h2>Réservez le menu qui vous convient</h2>
         <p class="search__restaurant--description ">
           Découvrez des restaurants d'exception, sélectionnés par nos soins.
         </p>
@@ -59,36 +63,29 @@
           </li>
         </ol>
       </div>
-      <!-- Restaurants -->
+           <!-- Restaurants -->
+      <main>
       <section class="section__restaurants">
-
         <h2>
           Restaurants
         </h2>
-
         <!-- La palette du goûte -->
           <article class="restaurants__content transition-card">
-          
             <a href="/view/la-palette-du-gout.html"> <img src="imgs/jay-wennington-N_Y88TWmGwA-unsplash.jpg" alt="La palette du goût"></a>
             <a href="/view/la-palette-du-gout.html"><p class="new__content">Nouveau</p></a>
-          
+            
             <div class="restaurants__description">
                 <a href="/view/la-palette-du-gout.html">
                     <div class="restaurant__description--text">
-
                         <h3>La palette du goût</h3>
                         <p>Ménilmontant</p>
-
-
                     </div>
                 </a>
-
                 <div class="hearts">
                     <i class="far fa-heart"></i>
                     <i class="fas fa-heart"></i>
                 </div>
             </div>
-
         </article>
         <!-- La note enchantée -->
         <article class="restaurants__content transition-card">
@@ -125,7 +122,7 @@
             </div>
         </div>
     </article>
-    <!--  -->
+    <!-- Le délice des sens -->
     <article class="restaurants__content transition-card">
       <a href="#"> <img src="imgs/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" alt="Le délice des sens"></a>
       <div class="restaurants__description">
@@ -144,7 +141,6 @@
     
       </section>
     </main>
-
     <footer class="footer">
         <!--logo du site-->
         <a href="index.html">
