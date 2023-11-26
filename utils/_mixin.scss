@@ -6,7 +6,7 @@
   opacity: 0;
   &:hover {
     opacity: 1;
-    transition: opacity 700ms linear;
+    transition: opacity 0.5s linear;
     cursor: pointer;
   }
 }
@@ -40,13 +40,4 @@
   overflow: hidden;
 }
 
-@mixin check-icon-animation {
-  @keyframes check-icon-animation {
-    0% {
-      transform: rotate(-270deg);
-    }
-    100% {
-      transform: rotate(0);
-    }
-  }
-}
+

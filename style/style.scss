@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Shrikhand&display=swap");
+@import "../utils/animations";
 @import "../utils/variables";
 @import "../utils/mixin";
 @import "../utils/police";
@@ -50,7 +51,7 @@ body {
     width: 90%;
     font-weight: 900;
   }
-  &--description {
+  &__description {
     padding: 10px 0 30px 0;
     font-weight: 300;
     text-align: center;
@@ -79,7 +80,7 @@ body {
       &:hover {
         cursor: pointer;
         box-shadow: 0 3px 5px $primary-color;
-        transition: 0.5s;
+        transition: 0.3s;
         transform: scale(1.02);
         i {
           color: $primary-color;
@@ -114,7 +115,6 @@ main {
     .restaurants__content {
       position: relative;
       border-radius: 15px;
-      // padding: 0 0 20px 0;
       margin-bottom: 20px;
       background-color: $white-color;
       img {
@@ -168,7 +168,7 @@ main {
         }
       }
     }
-    .transition-card {
+    .transition__card {
       transition: transform 250ms ease-in-out;
       &:hover {
         transform: scale(1.05);
@@ -187,7 +187,11 @@ header {
       left: 5%;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 20px;
+      font-size: 25px;
+      color: $black-color;
+      &:hover {
+        font-size: 30px;
+      }
     }
   }
 }
@@ -258,7 +262,9 @@ header {
   }
 
   .the__entrees {
-    .the__entrees--content {
+    animation: appear-animation 1s;
+    animation-fill-mode: both;
+    .the__entrees__content {
       @include text-formatting-menu;
       display: flex;
       border-radius: 20px;
@@ -270,7 +276,7 @@ header {
       box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
       cursor: pointer;
       //Description et prix
-      .the__entrees--infos {
+      .the__entrees__infos {
         @include text-formatting-menu;
         padding: 1rem;
         h4 {
@@ -311,11 +317,23 @@ header {
       &:hover .check-icon {
         margin-right: 0;
         i {
-          @include check-icon-animation;
           animation: check-icon-animation 0.5s ease-in-out;
         }
       }
     }
+  }
+  // Delay des animations
+  .the__entrees__delay__1 {
+    animation-delay: 250ms;
+  }
+  .the__entrees__delay__2 {
+    animation-delay: 350ms;
+  }
+  .the__entrees__delay__3 {
+    animation-delay: 450ms;
+  }
+  .the__entrees__delay__4 {
+    animation-delay: 550ms;
   }
   //Boutton commander
   .command__btn {
@@ -324,7 +342,7 @@ header {
       @include button;
       margin-top: 50px;
     }
-    a{
+    a {
       color: $white-color;
     }
   }
@@ -399,18 +417,22 @@ footer {
     }
   }
   // //============================= FOOTER
-    footer {
-      a {
-        h3 {
-          width: 90%;
-          margin: auto;
-        }
-      }
-      ul {
+  footer {
+    a {
+      h3 {
         width: 90%;
         margin: auto;
       }
     }
+    ul {
+      width: 90%;
+      margin: auto;
+    }
+  }
+  .menu__restaurant {
+    width: 75%;
+    margin: auto;
+  }
 }
 @media all and (min-width: 1024px) {
   //============================= FONCTIONNEMENT DU SITE
@@ -465,5 +487,9 @@ footer {
       width: 90%;
       margin: auto;
     }
+  }
+  .menu__restaurant {
+    width: 75%;
+    margin: auto;
   }
 }

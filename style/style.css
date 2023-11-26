@@ -1,4 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Shrikhand&display=swap");
+@keyframes check-icon-animation {
+  0% {
+    transform: rotate(-270deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@keyframes appear-animation {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -46,7 +64,7 @@ body {
   width: 90%;
   font-weight: 900;
 }
-.search__restaurant--description {
+.search__restaurant__description {
   padding: 10px 0 30px 0;
   font-weight: 300;
   text-align: center;
@@ -89,7 +107,7 @@ body {
 .operations__content ol li:hover {
   cursor: pointer;
   box-shadow: 0 3px 5px #9356dc;
-  transition: 0.5s;
+  transition: 0.3s;
   transform: scale(1.02);
 }
 .operations__content ol li:hover i {
@@ -179,13 +197,13 @@ main .section__restaurants .restaurants__content .restaurants__description .hear
 }
 main .section__restaurants .restaurants__content .restaurants__description .hearts .fas:hover {
   opacity: 1;
-  transition: opacity 700ms linear;
+  transition: opacity 0.5s linear;
   cursor: pointer;
 }
-main .section__restaurants .transition-card {
+main .section__restaurants .transition__card {
   transition: transform 250ms ease-in-out;
 }
-main .section__restaurants .transition-card:hover {
+main .section__restaurants .transition__card:hover {
   transform: scale(1.05);
 }
 
@@ -197,7 +215,11 @@ header a i {
   left: 5%;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 20px;
+  font-size: 25px;
+  color: #000;
+}
+header a i:hover {
+  font-size: 30px;
 }
 
 .restaurant__recipe__photo img {
@@ -242,7 +264,7 @@ header a i {
 }
 .menu__restaurant .title__restaurant .hearts .fas:hover {
   opacity: 1;
-  transition: opacity 700ms linear;
+  transition: opacity 0.5s linear;
   cursor: pointer;
 }
 .menu__restaurant .card__restaurant h3 {
@@ -264,7 +286,11 @@ header a i {
   background-color: #99E2D0;
   display: inline-block;
 }
-.menu__restaurant .the__entrees .the__entrees--content {
+.menu__restaurant .the__entrees {
+  animation: appear-animation 1s;
+  animation-fill-mode: both;
+}
+.menu__restaurant .the__entrees .the__entrees__content {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -278,33 +304,33 @@ header a i {
   box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
-.menu__restaurant .the__entrees .the__entrees--content .the__entrees--infos {
+.menu__restaurant .the__entrees .the__entrees__content .the__entrees__infos {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   padding: 1rem;
 }
-.menu__restaurant .the__entrees .the__entrees--content .the__entrees--infos h4 {
+.menu__restaurant .the__entrees .the__entrees__content .the__entrees__infos h4 {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   font-family: "Shrikhand", serif;
   font-weight: 500;
 }
-.menu__restaurant .the__entrees .the__entrees--content .the__entrees--infos p {
+.menu__restaurant .the__entrees .the__entrees__content .the__entrees__infos p {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.menu__restaurant .the__entrees .the__entrees--content .entrees__price {
+.menu__restaurant .the__entrees .the__entrees__content .entrees__price {
   display: flex;
   align-items: flex-end;
   padding: 1rem;
   font-weight: 900;
   margin-left: auto;
 }
-.menu__restaurant .the__entrees .the__entrees--content .check-icon {
+.menu__restaurant .the__entrees .the__entrees__content .check-icon {
   width: 4rem;
   margin-right: -4rem;
   display: flex;
@@ -315,23 +341,27 @@ header a i {
   transition: margin-right 0.8s;
   background-color: #99E2D0;
 }
-.menu__restaurant .the__entrees .the__entrees--content .check-icon i {
+.menu__restaurant .the__entrees .the__entrees__content .check-icon i {
   font-size: 1.5rem;
   color: #fff;
 }
-.menu__restaurant .the__entrees .the__entrees--content:hover .check-icon {
+.menu__restaurant .the__entrees .the__entrees__content:hover .check-icon {
   margin-right: 0;
 }
-.menu__restaurant .the__entrees .the__entrees--content:hover .check-icon i {
+.menu__restaurant .the__entrees .the__entrees__content:hover .check-icon i {
   animation: check-icon-animation 0.5s ease-in-out;
 }
-@keyframes check-icon-animation {
-  0% {
-    transform: rotate(-270deg);
-  }
-  100% {
-    transform: rotate(0);
-  }
+.menu__restaurant .the__entrees__delay__1 {
+  animation-delay: 250ms;
+}
+.menu__restaurant .the__entrees__delay__2 {
+  animation-delay: 350ms;
+}
+.menu__restaurant .the__entrees__delay__3 {
+  animation-delay: 450ms;
+}
+.menu__restaurant .the__entrees__delay__4 {
+  animation-delay: 550ms;
 }
 .menu__restaurant .command__btn {
   padding-bottom: 50px;
@@ -419,6 +449,10 @@ footer ul li i {
     width: 90%;
     margin: auto;
   }
+  .menu__restaurant {
+    width: 75%;
+    margin: auto;
+  }
 }
 @media all and (min-width: 1024px) {
   .operations__content h2 {
@@ -458,6 +492,10 @@ footer ul li i {
   }
   footer ul {
     width: 90%;
+    margin: auto;
+  }
+  .menu__restaurant {
+    width: 75%;
     margin: auto;
   }
 }/*# sourceMappingURL=style.css.map */
