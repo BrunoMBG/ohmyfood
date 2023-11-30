@@ -259,7 +259,7 @@ header a i {
   color: #000;
 }
 header a i:hover {
-  font-size: 30px;
+  transform: scale(1.2) translateY(-50%);
 }
 
 .restaurant__recipe__photo img {
